@@ -10,7 +10,7 @@ import br.com.setebit.delivery.service.BaseService;
 import br.com.setebit.delivery.service.ProdutoService;
 
 @RestController
-@RequestMapping("/api/produto")
+@RequestMapping("/delivery/produto")
 public class ProdutoController extends AbstractController<Produto, Integer, ProdutoDTO> {
 
 	@Autowired

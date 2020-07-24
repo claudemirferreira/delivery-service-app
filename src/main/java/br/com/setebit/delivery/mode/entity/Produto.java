@@ -27,7 +27,7 @@ public class Produto extends AbstractEntity implements Serializable {
 	@Column(length = 60, nullable = false)
 	private String nome;
 
-	@Column(length = 20, nullable = false)
+	@Column(length = 200, nullable = false)
 	private String descricao;
 
 	@Column(length = 20, nullable = false)

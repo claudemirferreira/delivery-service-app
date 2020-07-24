@@ -5,15 +5,15 @@ import java.util.List;
 
 public class Response<T> {
 
-	private T data;
+	private T content;
 	private List<String> errors;
 
-	public T getData() {
-		return data;
+	public T getContent() {
+		return content;
 	}
 
-	public void setData(T T) {
-		this.data = T;
+	public void setContent(T content) {
+		this.content = content;
 	}
 
 	public List<String> getErrors() {

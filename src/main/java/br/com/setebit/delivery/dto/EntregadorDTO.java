@@ -10,7 +10,7 @@ public class EntregadorDTO implements Serializable {
 
 	private String nome;
 
-	private String numeroHailitacao;
+	private String cnh;
 
 	private String placa;
 
@@ -30,12 +30,12 @@ public class EntregadorDTO implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getNumeroHailitacao() {
-		return numeroHailitacao;
+	public String getCnh() {
+		return cnh;
 	}
 
-	public void setNumeroHailitacao(String numeroHailitacao) {
-		this.numeroHailitacao = numeroHailitacao;
+	public void setCnh(String cnh) {
+		this.cnh = cnh;
 	}
 
 	public String getPlaca() {

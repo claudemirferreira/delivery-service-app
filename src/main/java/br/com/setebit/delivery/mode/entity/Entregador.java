@@ -28,7 +28,7 @@ public class Entregador extends AbstractEntity implements Serializable {
 	private String nome;
 
 	@Column(length = 20, nullable = false)
-	private String numeroHailitacao;
+	private String cnh;
 
 	@Column(length = 20, nullable = false)
 	private String placa;
@@ -49,12 +49,12 @@ public class Entregador extends AbstractEntity implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getNumeroHailitacao() {
-		return numeroHailitacao;
+	public String getCnh() {
+		return cnh;
 	}
 
-	public void setNumeroHailitacao(String numeroHailitacao) {
-		this.numeroHailitacao = numeroHailitacao;
+	public void setCnh(String cnh) {
+		this.cnh = cnh;
 	}
 
 	public String getPlaca() {
@@ -93,10 +93,10 @@ public class Entregador extends AbstractEntity implements Serializable {
 	public Entregador() {
 	}
 
-	public Entregador(Integer id, String nome, String numeroHailitacao, String placa) {
+	public Entregador(Integer id, String nome, String cnh, String placa) {
 		this.id = id;
 		this.nome = nome;
-		this.numeroHailitacao = numeroHailitacao;
+		this.cnh = cnh;
 		this.placa = placa;
 	}
 

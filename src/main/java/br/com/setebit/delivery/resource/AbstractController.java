@@ -9,6 +9,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,8 @@ import br.com.setebit.delivery.util.ObjectMapperUtils;
  * @param <ID>  Entity's id
  * @param <DTO> DTO object to convert
  */
+
+@CrossOrigin(origins = "*")
 public abstract class AbstractController<T, ID, DTO> {
 
 	protected abstract BaseService<T, ID> getService();
@@ -33,7 +36,7 @@ public abstract class AbstractController<T, ID, DTO> {
 	@RequestMapping(value = "", method = GET, produces = APPLICATION_JSON_VALUE)
 	public ResponseEntity<Response<List<DTO>>> find() {
 		Response<List<DTO>> response = new Response<List<DTO>>();
-		response.setData(toDto(getService().findAll()));
+		response.setContent(toDto(getService().findAll()));
 		return ResponseEntity.ok(response);
 	}
 
@@ -42,7 +45,7 @@ public abstract class AbstractController<T, ID, DTO> {
 		Response<DTO> response = new Response<DTO>();
 		try {
 			DTO dto = toDto(getService().findById(id));
-			response.setData(dto);
+			response.setContent(dto);
 			return ResponseEntity.ok(response);
 		} catch (Exception e) {
 			response.getErrors().add("Register not found id:" + id);
@@ -65,7 +68,7 @@ public abstract class AbstractController<T, ID, DTO> {
 		Response<DTO> response = new Response<DTO>();
 		try {
 			DTO dto = toDto(getService().save(entity));
-			response.setData(dto);
+			response.setContent(dto);
 			return ResponseEntity.ok(response);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(response);
