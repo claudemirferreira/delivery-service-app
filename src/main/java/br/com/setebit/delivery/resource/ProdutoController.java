@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +20,7 @@ import br.com.setebit.delivery.service.ProdutoService;
 
 @RestController
 @RequestMapping("/delivery/produto/")
+@CrossOrigin(origins = "*")
 public class ProdutoController extends AbstractController<Produto, Integer, ProdutoDTO> {
 
 	@Autowired
@@ -38,6 +40,16 @@ public class ProdutoController extends AbstractController<Produto, Integer, Prod
 	public Page<Produto> pesquisar(HttpServletResponse resp, @RequestBody FiltroPaginacaoDTO dto) {
 		try {
 			return service.pesquisa(dto);
+		} catch (Exception e) {
+			System.out.println("ocorreu um erro ");
+		}
+		return null;
+	}
+	
+	@RequestMapping(value = "pesquisar", method = RequestMethod.GET, produces = APPLICATION_JSON_VALUE)
+	public String pesquisar(HttpServletResponse resp) {
+		try {
+			return "ok";
 		} catch (Exception e) {
 			System.out.println("ocorreu um erro ");
 		}

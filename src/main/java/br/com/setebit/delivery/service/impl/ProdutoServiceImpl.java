@@ -32,7 +32,7 @@ public class ProdutoServiceImpl extends AbstractService<Produto, Integer> implem
 	public Page<Produto> pesquisa(FiltroPaginacaoDTO dto) {
 		System.out.println(dto.toString());
 		Pageable pageable = PageRequest.of(dto.getPage(), dto.getSize(), Sort.by("nome"));
-		return repository.pesquisa(dto.getNome(), dto.getId(), pageable);
+		return repository.pesquisa(dto.getNome()+"%", dto.getId(), pageable);
 	}
 
 }
