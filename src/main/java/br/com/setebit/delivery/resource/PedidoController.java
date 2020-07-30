@@ -27,7 +27,7 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperPrint;
 
 @RestController
-@RequestMapping("/delivery/pedido-produto")
+@RequestMapping("/delivery/pedido")
 public class PedidoController extends AbstractController<Pedido, Integer, PedidoDTO> {
 
 	@Autowired

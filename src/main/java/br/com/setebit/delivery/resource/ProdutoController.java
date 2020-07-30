@@ -17,10 +17,13 @@ import br.com.setebit.delivery.dto.ProdutoDTO;
 import br.com.setebit.delivery.mode.entity.Produto;
 import br.com.setebit.delivery.service.BaseService;
 import br.com.setebit.delivery.service.ProdutoService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/delivery/produto/")
 @CrossOrigin(origins = "*")
+@Api(value = "API rest produto")
 public class ProdutoController extends AbstractController<Produto, Integer, ProdutoDTO> {
 
 	@Autowired
@@ -37,6 +40,7 @@ public class ProdutoController extends AbstractController<Produto, Integer, Prod
 	}
 
 	@RequestMapping(value = "pesquisar", method = RequestMethod.POST, produces = APPLICATION_JSON_VALUE)
+	@ApiOperation(value="retorna a lista de produtos")
 	public Page<Produto> pesquisar(HttpServletResponse resp, @RequestBody FiltroPaginacaoDTO dto) {
 		try {
 			return service.pesquisa(dto);
