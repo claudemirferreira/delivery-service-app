@@ -27,7 +27,7 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperPrint;
 
 @RestController
-@RequestMapping("/delivery/pedido")
+@RequestMapping("/delivery/pedido/")
 public class PedidoController extends AbstractController<Pedido, Integer, PedidoDTO> {
 
 	@Autowired
@@ -44,6 +44,11 @@ public class PedidoController extends AbstractController<Pedido, Integer, Pedido
 	@Override
 	protected Class<PedidoDTO> getDtoClass() {
 		return PedidoDTO.class;
+	}
+
+	@Override
+	protected Class<Pedido> getEntityClass() {
+		return Pedido.class;
 	}
 
 	@RequestMapping(value = "/geraPdf", method = RequestMethod.POST)

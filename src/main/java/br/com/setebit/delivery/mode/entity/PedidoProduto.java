@@ -20,7 +20,7 @@ import javax.persistence.Table;
 public class PedidoProduto extends AbstractEntity implements Serializable {
 
 	private static final long serialVersionUID = 7371241296081749393L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_prod_pedi")
@@ -37,12 +37,43 @@ public class PedidoProduto extends AbstractEntity implements Serializable {
 	@Column(length = 20, nullable = false)
 	private double valor;
 
+	@Column(length = 10, nullable = false)
+	private double quantidade;
+	
+	public Produto getProduto() {
+		return produto;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
+
+	public Pedido getPedido() {
+		return pedido;
+	}
+
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
+	}
+
+	public double getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(double quantidade) {
+		this.quantidade = quantidade;
+	}
+
 	public double getValor() {
 		return valor;
 	}
 
 	public void setValor(double valor) {
 		this.valor = valor;
+	}
+
+	public double calcularValorTotal() {
+		return this.valor * this.quantidade;
 	}
 
 	@Override
@@ -79,6 +110,6 @@ public class PedidoProduto extends AbstractEntity implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}	
+	}
 
 }

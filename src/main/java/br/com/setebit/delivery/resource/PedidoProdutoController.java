@@ -17,6 +17,11 @@ public class PedidoProdutoController extends AbstractController<PedidoProduto, I
 	private PedidoProdutoService service;
 
 	@Override
+	protected Class<PedidoProduto> getEntityClass() {
+		return PedidoProduto.class;
+	}
+
+	@Override
 	protected BaseService<PedidoProduto, Integer> getService() {
 		return service;
 	}

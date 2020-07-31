@@ -3,6 +3,8 @@ package br.com.setebit.delivery.dto;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+
 import br.com.setebit.delivery.enumerated.StatusPedidoEnum;
 
 public class PedidoDTO implements Serializable {
@@ -11,10 +13,13 @@ public class PedidoDTO implements Serializable {
 
 	private Integer id;
 
+	@NotNull(message = "nome deve ser informado")
 	private String nome;
 
+	@NotNull(message = "endereço deve ser informado")
 	private String endereco;
 
+	@NotNull(message = "telefone deve ser informado")
 	private String telefone;
 
 	private Date data;

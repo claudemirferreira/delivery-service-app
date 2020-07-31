@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import br.com.setebit.delivery.mode.entity.Pedido;
 import br.com.setebit.delivery.repository.PedidoRepository;
 import br.com.setebit.delivery.service.PedidoService;
+import br.com.setebit.delivery.util.PedidoUtil;
 
 @Service
 public class PedidoServiceImpl extends AbstractService<Pedido, Integer> implements PedidoService {
@@ -22,5 +23,14 @@ public class PedidoServiceImpl extends AbstractService<Pedido, Integer> implemen
 	protected CrudRepository<Pedido, Integer> getRepository() {
 		return repository;
 	}
+
+	@Override
+	public Pedido criar(Pedido pedido) {
+		pedido = PedidoUtil.calcularValorPedido(pedido);
+		pedido = repository.save(pedido);
+		return pedido;
+	}
+	
+	
 
 }

@@ -2,16 +2,20 @@ package br.com.setebit.delivery.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
+
 public class ProdutoDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
 
+	@NotNull(message = "nome deve ser informado")
 	private String nome;
 
 	private String descricao;
 
+	@NotNull(message = "valor deve ser informado")
 	private double valor;
 
 	public Integer getId() {

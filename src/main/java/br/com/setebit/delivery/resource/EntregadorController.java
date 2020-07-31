@@ -10,7 +10,7 @@ import br.com.setebit.delivery.service.BaseService;
 import br.com.setebit.delivery.service.EntregadorService;
 
 @RestController
-@RequestMapping("/delivery/entregador")
+@RequestMapping("/delivery/entregador/")
 public class EntregadorController extends AbstractController<Entregador, Integer, EntregadorDTO> {
 
 	@Autowired
@@ -26,12 +26,9 @@ public class EntregadorController extends AbstractController<Entregador, Integer
 		return EntregadorDTO.class;
 	}
 
-//	@RequestMapping(value = "/findAllByNome", method = RequestMethod.POST, produces = APPLICATION_JSON_VALUE)
-//	public Page<Entregador> pesquisar(HttpServletRequest request,
-//			@RequestBody EntregadorDTO dto,
-//			@RequestParam(value = "page", required = false, defaultValue = "0") int page,
-//			@RequestParam(value = "size", required = false, defaultValue = "10") int size, BindingResult result) {
-//
-//		return service.findByNomeLike(dto.getNome(), page, size);
-//	}
+	@Override
+	protected Class<Entregador> getEntityClass() {
+		return Entregador.class;
+	}
+
 }

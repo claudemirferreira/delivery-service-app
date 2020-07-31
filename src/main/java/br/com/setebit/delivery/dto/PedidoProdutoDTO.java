@@ -2,6 +2,8 @@ package br.com.setebit.delivery.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Min;
+
 public class PedidoProdutoDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -13,6 +15,9 @@ public class PedidoProdutoDTO implements Serializable {
 	private PedidoDTO pedido;
 
 	private double valor;
+	
+	@Min(value = 1, message = "quantidade deve ser maior que 0")
+	private double quantidade;
 
 	public Integer getId() {
 		return id;

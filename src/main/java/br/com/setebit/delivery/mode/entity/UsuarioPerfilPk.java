@@ -18,6 +18,7 @@ public class UsuarioPerfilPk implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
+	
 	@ManyToOne
 	@JoinColumn(name = "id_perfil")
 	private Perfil perfil;

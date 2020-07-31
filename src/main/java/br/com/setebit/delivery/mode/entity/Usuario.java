@@ -54,9 +54,6 @@ public class Usuario extends AbstractEntity implements Serializable {
 	@Column(unique = true, length = 100)
 	private String email;
 
-	@OneToMany(mappedBy = "sistema")
-	private List<Perfil> perfils;
-
 	@Column(length = 100, nullable = false)
 	private String nome;
 
@@ -155,14 +152,6 @@ public class Usuario extends AbstractEntity implements Serializable {
 
 	public void setProfile(ProfileEnum profile) {
 		this.profile = profile;
-	}
-
-	public List<Perfil> getPerfils() {
-		return perfils;
-	}
-
-	public void setPerfils(List<Perfil> perfils) {
-		this.perfils = perfils;
 	}
 
 	public void setId(int id) {

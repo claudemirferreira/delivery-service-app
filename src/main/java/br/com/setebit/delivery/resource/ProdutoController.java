@@ -39,6 +39,11 @@ public class ProdutoController extends AbstractController<Produto, Integer, Prod
 		return ProdutoDTO.class;
 	}
 
+	@Override
+	protected Class<Produto> getEntityClass() {
+		return Produto.class;
+	}
+
 	@RequestMapping(value = "pesquisar", method = RequestMethod.POST, produces = APPLICATION_JSON_VALUE)
 	@ApiOperation(value="retorna a lista de produtos")
 	public Page<Produto> pesquisar(HttpServletResponse resp, @RequestBody FiltroPaginacaoDTO dto) {

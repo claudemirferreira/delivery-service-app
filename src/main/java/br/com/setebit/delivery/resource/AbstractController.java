@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -32,6 +33,8 @@ public abstract class AbstractController<T, ID, DTO> {
 	protected abstract BaseService<T, ID> getService();
 
 	protected abstract Class<DTO> getDtoClass();
+	
+	protected abstract Class<T> getEntityClass();
 
 	@RequestMapping(value = "", method = GET, produces = APPLICATION_JSON_VALUE)
 	public ResponseEntity<Response<List<DTO>>> find() {
@@ -64,10 +67,10 @@ public abstract class AbstractController<T, ID, DTO> {
 	}
 
 	@RequestMapping(value = "", method = RequestMethod.POST, produces = APPLICATION_JSON_VALUE)
-	public ResponseEntity<Response<DTO>> findById(HttpServletResponse resp, @RequestBody T entity) {
+	public ResponseEntity<Response<DTO>> save(HttpServletResponse resp, @Valid @RequestBody DTO obj) {
 		Response<DTO> response = new Response<DTO>();
 		try {
-			DTO dto = toDto(getService().save(entity));
+			DTO dto = toDto(getService().save(toEntity(obj)));
 			response.setContent(dto);
 			return ResponseEntity.ok(response);
 		} catch (Exception e) {
@@ -81,6 +84,15 @@ public abstract class AbstractController<T, ID, DTO> {
 
 	private DTO toDto(T entityList) {
 		return ObjectMapperUtils.map(entityList, getDtoClass());
+	}
+
+	private T toEntity(DTO dto) {
+		return ObjectMapperUtils.map(dto, getEntityClass());
+	}
+
+	@SuppressWarnings("unused")
+	private List<T> toEntity(Collection<DTO> list) {
+		return ObjectMapperUtils.mapAll(list, getEntityClass());
 	}
 
 }
