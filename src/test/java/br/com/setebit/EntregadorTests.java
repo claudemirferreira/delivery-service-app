@@ -18,7 +18,7 @@ class EntregadorTests {
 	}
 
 	@Test
-	void testarCalculo() {
+	void insert() {
 
 		Entregador en = new Entregador();
 		en.setCnh("aaa");

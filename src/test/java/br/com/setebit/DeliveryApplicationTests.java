@@ -45,12 +45,12 @@ class DeliveryApplicationTests {
 		
 		PedidoProduto e = new PedidoProduto();
 		e.setProduto(b);
-		e.setValor(4.0);
-		e.setQuantidade(4);
+		e.setValor(3.0);
+		e.setQuantidade(3);
 		
 		PedidoProduto f = new PedidoProduto();
 		f.setProduto(c);
-		f.setValor(5.0);
+		f.setValor(3.0);
 		f.setQuantidade(5);
 		
 		Pedido p = new Pedido();
