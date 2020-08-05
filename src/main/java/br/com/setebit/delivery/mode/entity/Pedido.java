@@ -20,6 +20,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.setebit.delivery.enumerated.StatusPedidoEnum;
 
 /**
@@ -66,6 +68,7 @@ public class Pedido extends AbstractEntity implements Serializable {
 	private Entregador entregador;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido")
+	@JsonIgnore
 	private List<PedidoProduto> pedidoProdutos = new ArrayList<PedidoProduto>();
 
 	public Integer getId() {

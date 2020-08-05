@@ -1,5 +1,7 @@
 package br.com.setebit.delivery.resource;
 
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -8,6 +10,7 @@ import java.sql.SQLException;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,11 +20,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.setebit.delivery.dto.FiltroPaginacaoDTO;
 import br.com.setebit.delivery.dto.PedidoDTO;
 import br.com.setebit.delivery.mode.entity.Pedido;
 import br.com.setebit.delivery.service.BaseService;
 import br.com.setebit.delivery.service.PedidoService;
 import br.com.setebit.delivery.util.RelatorioUtil;
+import io.swagger.annotations.ApiOperation;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -79,6 +84,17 @@ public class PedidoController extends AbstractController<Pedido, Integer, Pedido
 			System.err.println(e);
 		} catch (IOException e) {
 			System.err.println(e);
+		}
+		return null;
+	}
+
+	@RequestMapping(value = "pesquisar", method = RequestMethod.POST, produces = APPLICATION_JSON_VALUE)
+	@ApiOperation(value = "retorna a lista de produtos")
+	public Page<Pedido> pesquisar(HttpServletResponse resp, @RequestBody FiltroPaginacaoDTO dto) {
+		try {
+			return service.pesquisa(dto);
+		} catch (Exception e) {
+			System.out.println("ocorreu um erro ");
 		}
 		return null;
 	}

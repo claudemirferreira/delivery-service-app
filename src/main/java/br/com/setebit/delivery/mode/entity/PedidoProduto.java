@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 /**
  * 
  * @author altitdb
@@ -32,6 +34,7 @@ public class PedidoProduto extends AbstractEntity implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "id_pedido")
+	@JsonBackReference
 	private Pedido pedido;
 
 	@Column(length = 20, nullable = false)
