@@ -62,8 +62,10 @@ public class PedidoController extends AbstractController<Pedido, Integer, Pedido
 			throws JRException, SQLException, IOException {
 		System.out.println("########## getPDF");
 		try {
+			
+			PedidoDTO dto = toDto(service.findById(id));
 
-			JasperPrint jasperPrint = relatorioUtil.gerarPdf(id, "pedido.jrxml");
+			JasperPrint jasperPrint = relatorioUtil.gerarPdf(dto, "pedido.jrxml");
 			response.setContentType("application/pdf");
 			response.setHeader("Content-Disposition", "inline; filename=Relatorio.pdf");
 			// Faz a exportação do relatório para o HttpServletResponse

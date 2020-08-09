@@ -78,20 +78,20 @@ public abstract class AbstractController<T, ID, DTO> {
 		}
 	}
 
-	private List<DTO> toDto(Collection<T> entityList) {
+	protected List<DTO> toDto(Collection<T> entityList) {
 		return ObjectMapperUtils.mapAll(entityList, getDtoClass());
 	}
 
-	private DTO toDto(T entityList) {
+	protected DTO toDto(T entityList) {
 		return ObjectMapperUtils.map(entityList, getDtoClass());
 	}
 
-	private T toEntity(DTO dto) {
+	protected T toEntity(DTO dto) {
 		return ObjectMapperUtils.map(dto, getEntityClass());
 	}
 
 	@SuppressWarnings("unused")
-	private List<T> toEntity(Collection<DTO> list) {
+	protected List<T> toEntity(Collection<DTO> list) {
 		return ObjectMapperUtils.mapAll(list, getEntityClass());
 	}
 
