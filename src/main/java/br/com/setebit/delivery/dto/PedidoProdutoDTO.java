@@ -1,8 +1,13 @@
 package br.com.setebit.delivery.dto;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.List;
 
 import javax.validation.constraints.Min;
+
+import br.com.setebit.delivery.mode.entity.PedidoProduto;
+import br.com.setebit.delivery.util.ObjectMapperUtils;
 
 public class PedidoProdutoDTO implements Serializable {
 
@@ -14,8 +19,8 @@ public class PedidoProdutoDTO implements Serializable {
 
 	private PedidoDTO pedido;
 
-	private double valor;
-	
+	private BigDecimal valor;
+
 	@Min(value = 1, message = "quantidade deve ser maior que 0")
 	private double quantidade;
 
@@ -43,12 +48,20 @@ public class PedidoProdutoDTO implements Serializable {
 		this.pedido = pedido;
 	}
 
-	public double getValor() {
+	public BigDecimal getValor() {
 		return valor;
 	}
 
-	public void setValor(double valor) {
+	public void setValor(BigDecimal valor) {
 		this.valor = valor;
+	}
+
+	public static List<PedidoProdutoDTO> toDto(List<PedidoProduto> entityList) {
+		return ObjectMapperUtils.mapAll(entityList, PedidoProdutoDTO.class);
+	}
+
+	public static PedidoProdutoDTO toDto(PedidoProduto entityList) {
+		return ObjectMapperUtils.map(entityList, PedidoProdutoDTO.class);
 	}
 
 }

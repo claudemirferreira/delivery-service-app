@@ -5,6 +5,9 @@ import java.io.Serializable;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import br.com.setebit.delivery.mode.entity.Entregador;
+import br.com.setebit.delivery.util.ObjectMapperUtils;
+
 public class EntregadorDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -53,6 +56,10 @@ public class EntregadorDTO implements Serializable {
 
 	public void setPlaca(String placa) {
 		this.placa = placa;
+	}
+
+	public static EntregadorDTO toDto(Entregador entity) {
+		return ObjectMapperUtils.map(entity, EntregadorDTO.class);
 	}
 
 }

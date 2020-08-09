@@ -1,6 +1,7 @@
 package br.com.setebit.delivery.mode.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,10 +39,10 @@ public class PedidoProduto extends AbstractEntity implements Serializable {
 	private Pedido pedido;
 
 	@Column(length = 20, nullable = false)
-	private double valor;
+	private BigDecimal valor;
 
 	@Column(length = 10, nullable = false)
-	private double quantidade;
+	private BigDecimal quantidade;
 	
 	public Produto getProduto() {
 		return produto;
@@ -59,24 +60,24 @@ public class PedidoProduto extends AbstractEntity implements Serializable {
 		this.pedido = pedido;
 	}
 
-	public double getQuantidade() {
+	public BigDecimal getQuantidade() {
 		return quantidade;
 	}
 
-	public void setQuantidade(double quantidade) {
+	public void setQuantidade(BigDecimal quantidade) {
 		this.quantidade = quantidade;
 	}
 
-	public double getValor() {
+	public BigDecimal getValor() {
 		return valor;
 	}
 
-	public void setValor(double valor) {
+	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
 
-	public double calcularValorTotal() {
-		return this.valor * this.quantidade;
+	public BigDecimal calcularValorTotal() {
+		return this.valor ;
 	}
 
 	@Override

@@ -15,6 +15,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -56,15 +57,13 @@ public class PedidoController extends AbstractController<Pedido, Integer, Pedido
 		return Pedido.class;
 	}
 
-	@RequestMapping(value = "/geraPdf", method = RequestMethod.POST)
-	public ResponseEntity<byte[]> geraPdf(HttpServletResponse response, @RequestBody PedidoDTO dto)
+	@RequestMapping(value = "/comandaPdf/{id}", method = RequestMethod.GET)
+	public ResponseEntity<byte[]> pedidoPdf(HttpServletResponse response, @PathVariable("id") Integer id)
 			throws JRException, SQLException, IOException {
 		System.out.println("########## getPDF");
 		try {
 
-			System.out.println(dto.toString());
-
-			JasperPrint jasperPrint = relatorioUtil.gerarPdf(dto, "pedido.jasper");
+			JasperPrint jasperPrint = relatorioUtil.gerarPdf(id, "pedido.jrxml");
 			response.setContentType("application/pdf");
 			response.setHeader("Content-Disposition", "inline; filename=Relatorio.pdf");
 			// Faz a exportação do relatório para o HttpServletResponse
@@ -75,7 +74,7 @@ public class PedidoController extends AbstractController<Pedido, Integer, Pedido
 
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.parseMediaType("application/pdf"));
-			String filename = "relatorio.pdf";
+			String filename = "pedido.pdf";
 			headers.setContentDispositionFormData(filename, filename);
 			ResponseEntity<byte[]> responseEntity = new ResponseEntity<byte[]>(output, headers, HttpStatus.OK);
 
@@ -98,4 +97,5 @@ public class PedidoController extends AbstractController<Pedido, Integer, Pedido
 		}
 		return null;
 	}
+
 }

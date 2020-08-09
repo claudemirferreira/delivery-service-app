@@ -1,6 +1,7 @@
 package br.com.setebit.delivery.mode.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -55,10 +56,10 @@ public class Pedido extends AbstractEntity implements Serializable {
 	private Date dataEntrega;
 
 	@Column(length = 20, nullable = false)
-	private double valor;
+	private BigDecimal valor;
 
 	@Column(length = 20)
-	private double troco;
+	private BigDecimal troco;
 
 	@Enumerated(EnumType.STRING)
 	private StatusPedidoEnum status;
@@ -87,11 +88,11 @@ public class Pedido extends AbstractEntity implements Serializable {
 		this.nome = nome;
 	}
 
-	public double getValor() {
+	public BigDecimal getValor() {
 		return valor;
 	}
 
-	public void setValor(double valor) {
+	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
 
@@ -127,11 +128,11 @@ public class Pedido extends AbstractEntity implements Serializable {
 		this.dataEntrega = dataEntrega;
 	}
 
-	public double getTroco() {
+	public BigDecimal getTroco() {
 		return troco;
 	}
 
-	public void setTroco(double troco) {
+	public void setTroco(BigDecimal troco) {
 		this.troco = troco;
 	}
 
@@ -187,7 +188,7 @@ public class Pedido extends AbstractEntity implements Serializable {
 	public Pedido() {
 	}
 
-	public Pedido(Integer id, String nome, String endereco, String telefone, Date data, Date dataEntrega, double valor,
+	public Pedido(Integer id, String nome, String endereco, String telefone, Date data, Date dataEntrega, BigDecimal valor,
 			StatusPedidoEnum status, Entregador entregador) {
 		this.id = id;
 		this.nome = nome;

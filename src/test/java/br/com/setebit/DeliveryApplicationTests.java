@@ -40,18 +40,18 @@ class DeliveryApplicationTests {
 		
 		PedidoProduto d = new PedidoProduto();
 		d.setProduto(a);
-		d.setValor(3.0);
-		d.setQuantidade(3);
+		//d.setValor(3.0);
+		//d.setQuantidade(3);
 		
 		PedidoProduto e = new PedidoProduto();
 		e.setProduto(b);
-		e.setValor(3.0);
-		e.setQuantidade(3);
+		//e.setValor(3.0);
+		//e.setQuantidade(3);
 		
 		PedidoProduto f = new PedidoProduto();
 		f.setProduto(c);
-		f.setValor(3.0);
-		f.setQuantidade(5);
+		//f.setValor(3.0);
+		//f.setQuantidade(5);
 		
 		Pedido p = new Pedido();
 		p.setEndereco("rua 4");

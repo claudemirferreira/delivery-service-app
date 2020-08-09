@@ -1,7 +1,9 @@
 package br.com.setebit.delivery.dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
@@ -33,6 +35,8 @@ public class PedidoDTO implements Serializable {
 	private StatusPedidoEnum status;
 
 	private EntregadorDTO entregador;
+
+//	private List<PedidoProdutoDTO> pedidoProdutos = new ArrayList<PedidoProdutoDTO>();
 
 	public Integer getId() {
 		return id;
@@ -113,5 +117,13 @@ public class PedidoDTO implements Serializable {
 	public void setEntregador(EntregadorDTO entregador) {
 		this.entregador = entregador;
 	}
+
+//	public List<PedidoProdutoDTO> getPedidoProdutos() {
+//		return pedidoProdutos;
+//	}
+//
+//	public void setPedidoProdutos(List<PedidoProdutoDTO> pedidoProdutos) {
+//		this.pedidoProdutos = pedidoProdutos;
+//	}
 
 }

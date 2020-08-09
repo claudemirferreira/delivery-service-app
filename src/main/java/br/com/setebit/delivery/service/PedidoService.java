@@ -7,8 +7,10 @@ import br.com.setebit.delivery.mode.entity.Pedido;
 
 public interface PedidoService extends BaseService<Pedido, Integer> {
 
-	public Pedido criar(Pedido entity);
+	Pedido criar(Pedido entity);
 
 	Page<Pedido> pesquisa(FiltroPaginacaoDTO dto);
+	
+	//PedidoReportDTO find(Integer id);
 
 }
