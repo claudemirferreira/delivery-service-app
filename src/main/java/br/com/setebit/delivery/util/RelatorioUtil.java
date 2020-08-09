@@ -25,14 +25,14 @@ public class RelatorioUtil {
 	public RelatorioUtil() {
 	}
 
-	public JasperPrint gerarPdf(Integer idPèdido, String relatorio) throws JRException, SQLException {
+	public JasperPrint gerarPdf(Integer idPedido, String relatorio) throws JRException, SQLException {
 		Map<String, Object> parametros = new HashMap<String, Object>();
-		parametros.put("idPèdido", idPèdido);
+		parametros.put("idPedido", idPedido);
 
 		JasperReport jasperReport = JasperCompileManager
 				.compileReport(this.getClass().getResourceAsStream("/jasper/" + relatorio));
 
-		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, dataSource.getConnection());
+		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parametros, dataSource.getConnection());
 
 		return jasperPrint;
 	}
