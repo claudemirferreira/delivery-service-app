@@ -17,7 +17,7 @@ class EntregadorTests {
 	void contextLoads() {
 	}
 
-	@Test
+	//@Test
 	void insert() {
 
 		Entregador en = new Entregador();
