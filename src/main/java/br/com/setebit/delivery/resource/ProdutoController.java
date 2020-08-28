@@ -55,13 +55,4 @@ public class ProdutoController extends AbstractController<Produto, Integer, Prod
 		return null;
 	}
 	
-	@RequestMapping(value = "pesquisar", method = RequestMethod.GET, produces = APPLICATION_JSON_VALUE)
-	public String pesquisar(HttpServletResponse resp) {
-		try {
-			return "ok";
-		} catch (Exception e) {
-			System.out.println("ocorreu um erro ");
-		}
-		return null;
-	}
 }

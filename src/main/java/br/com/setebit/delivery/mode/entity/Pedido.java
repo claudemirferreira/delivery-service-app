@@ -24,6 +24,7 @@ import javax.persistence.TemporalType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.setebit.delivery.enumerated.StatusPedidoEnum;
+import br.com.setebit.delivery.enumerated.TipoPedidoEnum;
 
 /**
  * 
@@ -41,6 +42,7 @@ public class Pedido extends AbstractEntity implements Serializable {
 	@Column(name = "id_pedido")
 	private Integer id;
 
+	@Column(length = 100)
 	private String nome;
 
 	@Column(length = 200, nullable = false)
@@ -63,6 +65,9 @@ public class Pedido extends AbstractEntity implements Serializable {
 
 	@Enumerated(EnumType.STRING)
 	private StatusPedidoEnum status;
+	
+	@Enumerated(EnumType.STRING)
+	private TipoPedidoEnum tipoPedido;
 
 	@ManyToOne
 	@JoinColumn(name = "id_entregador")
@@ -160,6 +165,14 @@ public class Pedido extends AbstractEntity implements Serializable {
 		this.pedidoProdutos = pedidoProdutos;
 	}
 
+	public TipoPedidoEnum getTipoPedido() {
+		return tipoPedido;
+	}
+
+	public void setTipoPedido(TipoPedidoEnum tipoPedido) {
+		this.tipoPedido = tipoPedido;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -189,7 +202,7 @@ public class Pedido extends AbstractEntity implements Serializable {
 	}
 
 	public Pedido(Integer id, String nome, String endereco, String telefone, Date data, Date dataEntrega, BigDecimal valor,
-			StatusPedidoEnum status, Entregador entregador) {
+			StatusPedidoEnum status, Entregador entregador, TipoPedidoEnum tipoPedido) {
 		this.id = id;
 		this.nome = nome;
 		this.endereco = endereco;
@@ -199,6 +212,7 @@ public class Pedido extends AbstractEntity implements Serializable {
 		this.valor = valor;
 		this.status = status;
 		this.entregador = entregador;
+		this.tipoPedido = tipoPedido;
 	}
 
 }

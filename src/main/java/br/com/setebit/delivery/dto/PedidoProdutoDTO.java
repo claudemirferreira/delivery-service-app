@@ -18,7 +18,7 @@ public class PedidoProdutoDTO implements Serializable {
 	private ProdutoDTO produto;
 
 	private PedidoDTO pedido;
-
+	
 	private BigDecimal valor;
 
 	@Min(value = 1, message = "quantidade deve ser maior que 0")
@@ -54,6 +54,14 @@ public class PedidoProdutoDTO implements Serializable {
 
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
+	}
+
+	public double getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(double quantidade) {
+		this.quantidade = quantidade;
 	}
 
 	public static List<PedidoProdutoDTO> toDto(List<PedidoProduto> entityList) {

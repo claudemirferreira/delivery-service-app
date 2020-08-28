@@ -17,6 +17,8 @@ public class ProdutoDTO implements Serializable {
 
 	@NotNull(message = "valor deve ser informado")
 	private double valor;
+	
+	private Integer quantidade;
 
 	public Integer getId() {
 		return id;
@@ -48,6 +50,14 @@ public class ProdutoDTO implements Serializable {
 
 	public void setValor(double valor) {
 		this.valor = valor;
+	}
+
+	public Integer getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(Integer quantidade) {
+		this.quantidade = quantidade;
 	}
 
 }

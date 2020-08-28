@@ -10,7 +10,7 @@ import br.com.setebit.delivery.mode.entity.PedidoProduto;
 
 public interface PedidoProdutoRepository extends JpaRepository<PedidoProduto, Integer> {
 
-	@Query("select a from PedidoProduto a where a.pedido.id = :id")
-	List<PedidoProduto> findByProduto(@Param("id") Integer idProduto);
+	@Query("select a from PedidoProduto a where a.pedido.id = :idProduto")
+	List<PedidoProduto> findByProduto(@Param("idProduto") Integer idProduto);
 
 }

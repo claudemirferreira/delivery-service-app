@@ -1,5 +1,7 @@
 package br.com.setebit.delivery.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
@@ -21,6 +23,11 @@ public class PedidoProdutoServiceImpl extends AbstractService<PedidoProduto, Int
 	@Override
 	protected CrudRepository<PedidoProduto, Integer> getRepository() {
 		return repository;
+	}
+
+	@Override
+	public List<PedidoProduto> findByProduto(Integer idProduto) {
+		return repository.findByProduto(idProduto);
 	}
 
 }

@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.validation.constraints.NotNull;
 
 import br.com.setebit.delivery.enumerated.StatusPedidoEnum;
+import br.com.setebit.delivery.enumerated.TipoPedidoEnum;
 
 public class PedidoDTO implements Serializable {
 
@@ -31,6 +32,8 @@ public class PedidoDTO implements Serializable {
 	private double troco;
 
 	private StatusPedidoEnum status;
+
+	private TipoPedidoEnum tipoPedido;
 
 	private EntregadorDTO entregador;
 
@@ -114,6 +117,14 @@ public class PedidoDTO implements Serializable {
 
 	public void setEntregador(EntregadorDTO entregador) {
 		this.entregador = entregador;
+	}
+
+	public TipoPedidoEnum getTipoPedido() {
+		return tipoPedido;
+	}
+
+	public void setTipoPedido(TipoPedidoEnum tipoPedido) {
+		this.tipoPedido = tipoPedido;
 	}
 
 //	public List<PedidoProdutoDTO> getPedidoProdutos() {
