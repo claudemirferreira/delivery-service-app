@@ -5,9 +5,11 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import br.com.setebit.delivery.mode.entity.Pedido;
 import br.com.setebit.delivery.mode.entity.PedidoProduto;
+import br.com.setebit.delivery.mode.entity.Produto;
 
-public class ItensDTO implements Serializable {
+public class ItemDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -71,7 +73,7 @@ public class ItensDTO implements Serializable {
 		this.quantidade = quantidade;
 	}
 
-	public ItensDTO(Integer id, Integer idProduto, String nome, Integer idPedido, BigDecimal valor,
+	public ItemDTO(Integer id, Integer idProduto, String nome, Integer idPedido, BigDecimal valor,
 			BigDecimal quantidade) {
 		super();
 		this.id = id;
@@ -82,7 +84,7 @@ public class ItensDTO implements Serializable {
 		this.quantidade = quantidade;
 	}
 
-	public ItensDTO(PedidoProduto entity) {
+	public ItemDTO(PedidoProduto entity) {
 		super();
 		this.id = entity.getId();
 		this.idProduto = entity.getProduto().getId();
@@ -92,14 +94,27 @@ public class ItensDTO implements Serializable {
 		this.quantidade = entity.getQuantidade();
 	}
 
-	public static List<ItensDTO> toDto(List<PedidoProduto> entityList) {
-		List<ItensDTO> dtoList = entityList.stream().map(e -> new ItensDTO(e)).collect(Collectors.toList());
+	public static List<ItemDTO> toDto(List<PedidoProduto> entityList) {
+		List<ItemDTO> dtoList = entityList.stream().map(e -> new ItemDTO(e)).collect(Collectors.toList());
 		return dtoList;
 	}
 
-	public static ItensDTO toDto(PedidoProduto entity) {
-		return new ItensDTO(entity.getId(), entity.getProduto().getId(), entity.getProduto().getNome(),
+	public static ItemDTO toDto(PedidoProduto entity) {
+		return new ItemDTO(entity.getId(), entity.getProduto().getId(), entity.getProduto().getNome(),
 				entity.getPedido().getId(), entity.getValor(), entity.getQuantidade());
+	}
+
+	public static PedidoProduto toDto(ItemDTO dto) {
+		PedidoProduto pedidoProduto = new PedidoProduto();
+		Produto produto = new Produto(dto.getIdProduto());
+		Pedido pedido = new Pedido(dto.getIdPedido());
+		
+		pedidoProduto.setPedido(pedido);
+		pedidoProduto.setProduto(produto);
+		pedidoProduto.setValor(dto.getValor());
+		pedidoProduto.setQuantidade(dto.getQuantidade());
+		
+		return pedidoProduto;
 	}
 
 }

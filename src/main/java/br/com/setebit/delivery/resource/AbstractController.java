@@ -68,6 +68,7 @@ public abstract class AbstractController<T, ID, DTO> {
 
 	@RequestMapping(value = "", method = RequestMethod.POST, produces = APPLICATION_JSON_VALUE)
 	public ResponseEntity<Response<DTO>> save(HttpServletResponse resp, @Valid @RequestBody DTO obj) {
+
 		Response<DTO> response = new Response<DTO>();
 		try {
 			DTO dto = toDto(getService().save(toEntity(obj)));

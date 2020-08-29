@@ -215,4 +215,8 @@ public class Pedido extends AbstractEntity implements Serializable {
 		this.tipoPedido = tipoPedido;
 	}
 
+	public Pedido(Integer id) {
+		this.id = id;
+	}
+
 }

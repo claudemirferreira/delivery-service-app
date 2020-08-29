@@ -113,4 +113,8 @@ public class Produto extends AbstractEntity implements Serializable {
 		this.valor = valor;
 	}
 
+	public Produto(Integer id) {
+		this.id = id;
+	}
+
 }
